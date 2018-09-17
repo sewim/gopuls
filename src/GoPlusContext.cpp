@@ -124,10 +124,10 @@ void GoPlusContext::initPropertyConf()
       m_pConf->setBool("Action.AutoResign", false);
       m_pConf->setBool("Action.AutoMark", true);
 
-      m_pConf->setString("Engine.CommandList", "engine/gnugo/gnugo.exe --mode gtp;engine/fuego/fuego.exe --quiet");
+      m_pConf->setString("Engine.CommandList", "engine/lz16/leelaz.exe -g -t 12 -w 40b.txt -v 7000 --gpu 0 --gpu 1 -m 200");
       m_pConf->setInt("Engine.CommandIndex", 0);
       
-      m_pConf->setString("GoBoard.NameList", "QQΧ��;�ĳ�Χ��");
+      m_pConf->setString("GoBoard.NameList", "QQÎ§Æå;ÞÄ³ÇÎ§Æå");
       m_pConf->setInt("GoBoard.NameIndex", 0);
 
       // logger file
@@ -153,7 +153,7 @@ std::string GoPlusContext::getGoAIEngineCommand()
    
    Poco::StringTokenizer tokens(s, ";");
    if( getGoAIEngineCommandIndex() >= tokens.count() ){
-      return "engine/gnugo/gnugo.exe --mode gtp";
+      return "engine/lz16/leelaz.exe -g -t 12 -w 40b.txt -v 7000 --gpu 0 --gpu 1 -m 200";
    }else{
       return tokens[getGoAIEngineCommandIndex()];
    }
@@ -162,7 +162,7 @@ std::string GoPlusContext::getGoAIEngineCommand()
 std::list<std::string> GoPlusContext::getGoAIEngineCommandList()
 {
    std::list<std::string> commandList;
-   std::string s = m_pConf->getString("Engine.CommandList", "engine/gnugo/gnugo.exe --mode gtp;engine/fuego/fuego.exe --quiet");
+   std::string s = m_pConf->getString("Engine.CommandList", "engine/lz16/leelaz.exe -g -t 12 -w 40b.txt -v 7000 --gpu 0 --gpu 1 -m 200");
    
    Poco::StringTokenizer tokens(s, ";");
    int i; 
@@ -204,7 +204,7 @@ std::string GoPlusContext::getGoBoardName()
    
    Poco::StringTokenizer tokens(s, ";");
    if( getGoBoardNameIndex() >= tokens.count() ){
-      return "QQΧ��";
+      return "QQÎ§Æå";
    }else{
       return tokens[getGoBoardNameIndex()];
    }
@@ -213,7 +213,7 @@ std::string GoPlusContext::getGoBoardName()
 std::list<std::string> GoPlusContext::getGoBoardNameList()
 {
    std::list<std::string> commandList;
-   std::string s = m_pConf->getString("GoBoard.NameList", "QQΧ��;�ĳ�Χ��");
+   std::string s = m_pConf->getString("GoBoard.NameList", "QQÎ§Æå;ÞÄ³ÇÎ§Æå");
    
    Poco::StringTokenizer tokens(s, ";");
    int i; 
