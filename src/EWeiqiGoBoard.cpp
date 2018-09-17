@@ -1,19 +1,19 @@
 #include "EWeiQiGoBoard.h"
 
 // TODO
-// ¶Ô·½passÒ»²½
-// title ŞÄ³ÇTYGEM¶ÔŞÄ 381x144 ÖĞ¼äÎ»ÖÃ
-// button È·ÈÏ 80x25
+// å¯¹æ–¹passä¸€æ­¥
+// title å¼ˆåŸTYGEMå¯¹å¼ˆ 381x144 ä¸­é—´ä½ç½®
+// button ç¡®è®¤ 80x25
 
-// ×Ô¶¯¿ªÊ¼ 
-// title ¶Ô¾ÖÉêÇë 477x417
-// button ÉêÇë 105x37
-// button ½ÓÊÜ 105x37
+// è‡ªåŠ¨å¼€å§‹ 
+// title å¯¹å±€ç”³è¯· 477x417
+// button ç”³è¯· 105x37
+// button æ¥å— 105x37
 
 EWeiQiGoBoard::EWeiQiGoBoard():
    ScalableGoBoard(GoGameRule::BoardSize19)
 {
-   if( NULL == (_bitmap = WindowBitmap::getWindowBitmap("LiveBaduk.exe")) ){
+   if( NULL == (_bitmap = WindowBitmap::getWindowBitmap("TygemBaduk.exe")) ){
       return;
    }
 
@@ -93,7 +93,7 @@ bool EWeiQiGoBoard::confirmMessageBox(const std::string& askString)
    DWORD processID;
    HWndProcess hWndProcess;
 
-   if( (processID = getProcessIDFromName("LiveBaduk.exe")) == -1 ){
+   if( (processID = getProcessIDFromName("TygemBaduk.exe")) == -1 ){
       return false;
    }
 
@@ -117,7 +117,7 @@ bool EWeiQiGoBoard::confirmMessageBox(const std::string& askString)
          GetWindowText(hWndChild, buffer, 255);
          if( strcmp(askString.c_str(), buffer) == 0 ){
             bWindow = true;
-         }else if( strcmp("ÊÇ(&Y)", buffer) == 0 ){
+         }else if( strcmp("æ˜¯(&Y)", buffer) == 0 ){
             //75x23
             hWndYesButton = hWndChild;
          }
@@ -142,7 +142,7 @@ void EWeiQiGoBoard::pass()
    // TODO
    Sleep(100);
    
-   confirmMessageBox("'Òª¡®Í£Ò»ÕĞ¡¯Âğ£¿");
+   confirmMessageBox("'è¦â€˜åœä¸€æ‹›â€™å—ï¼Ÿ");
 }
 
 void EWeiQiGoBoard::resign()
@@ -152,7 +152,7 @@ void EWeiQiGoBoard::resign()
    // TODO
    Sleep(100);
    
-   confirmMessageBox("ÒªÈÏÊäÂğ£¿");
+   confirmMessageBox("è¦è®¤è¾“å—ï¼Ÿ");
 }
 
 bool EWeiQiGoBoard::getStatus()
@@ -362,7 +362,7 @@ bool EWeiQiGoBoard::getButtonPosition()
 
    // TODO
    // start button
-   // ÓÒÉÏ½ÇµÜÈı¸ö
+   // å³ä¸Šè§’å¼Ÿä¸‰ä¸ª
 
    std::list<RECT>::iterator it;
    RECT leftMostRect;
